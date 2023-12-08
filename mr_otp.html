@@ -3,10 +3,31 @@
 <head>
 <title>cr4mb0's - MR OTP</title>
 </head>
-<BODY BGCOLOR="#0000" TEXT="#FFFFFF" LINK="#FFFFFF" VLINK="#FFFFFF" ALINK="#FF0000">
+<BODY BGCOLOR="#0000" TEXT="#FFFFFF" LINK="#FFFFFF" VLINK="#FFFFFF" ALINK="#FF0000" onload="getSelectedKeyPreview(document.getElementById('selKey').value, document.getElementById('txtKeyPreview'));">
+<script src="./js/mr_otp.js"></script>
 <h1>'MR' One Time Pad - Encoder / Decoder</h1>
-<table>
-<tr><td>Test</td></tr>
-</table>
+<br />
+<label for="txtInput">Input:</label><br />
+<input type="text" name="txtInput" id="txtInput" size=107 onkeyup="getOTPOutput(document.getElementById('selKey').value, document.getElementById('selOperation').value, 'txtInput', 'txtOutput');"></input>
+<br /><br />
+<label for="selKey">Key:</label><br />
+<select name="selKey" id="selKey" onchange="getSelectedKeyPreview(document.getElementById('selKey').value, document.getElementById('txtKeyPreview')); getOTPOutput(document.getElementById('selKey').value, document.getElementById('selOperation').value, 'txtInput', 'txtOutput');">
+  <option value="1">Key 1</option>
+  <option value="2">Key 2</option>
+  <option value="3" selected>Key 3</option>
+  <option value="4">Key 4</option>
+  <option value="5">Key 5</option>
+</select>
+<input type="text" name="txtKeyPreview" id="txtKeyPreview" value="Selected Key Preview" style="background-color: #CCCCCC;" size=98 readonly></input>
+<br /><br />
+<label for="selOperation">Operation:</label><br />
+<select name="selOperation" id="selOperation" onchange="getOTPOutput(document.getElementById('selKey').value, document.getElementById('selOperation').value, 'txtInput', 'txtOutput');">
+  <option value="E">Encrypt</option>
+  <option value="D" selected>Decrypt</option>
+</select>
+<br /><br />
+<label for="txtOutput">Output:</label><br />
+<textarea name="txtOutput" id="txtOutput" cols="107" rows="5" style="background-color: #CCCCCC;" readonly>
+</textarea>
 </body>
 </html>
