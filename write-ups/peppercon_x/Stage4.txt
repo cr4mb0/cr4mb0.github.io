@@ -1,0 +1,63 @@
+You find yourself in an odd pyramid shaped casino called the Golden Parliament somewhere in the desert, puzzled, and playing a confusing game of baccarat.
+
+The history board reads:
+RB RR BBR RR G BBB RRR G BBB BBR RRR RRR G RRR BBR RB BBB RRB G BR RRB BBR RBR BR
+
+P:♠5♥2		B:♣J♦6
+P:♥3♥A♣2	B:♦10♣7
+P:♠3♠5		B:♥2♠7
+P:♠K♥8		B:♥3♦4
+P:♣2♦2♠5	B:♥3♣8♣A
+P:♠J♥9		B:♣2♣6
+P:♣10♣Q♠5	B:♥5♥6♠Q
+P:♣7♥9		B:♠K♥10♣10
+P:♦3♣J♦2	B:♣7♦J
+P:♦2♣7		B:♠10♠9
+P:♣4♠7♠K	B:♣8♦10
+P:♠A♥K♣10	B:♠4♠K♣K
+P:♣6♠5♦J	B:♣9♥K
+P:♣A♣7		B:♦3♦8♠Q
+P:♦10♦6		B:♥J♥K♣J
+P:♠3♠9♥J	B:♣A♦3♠8
+P:♥9♦5♠2	B:♥10♥6
+P:♥3♥2♦6	B:♥6♣6♥7
+P:♦4♦A♥6	B:♠10♣8
+P:♠A♥A♠4	B:♣J♣3♥2
+P:♠10♥A♥J	B:♣5♣4
+P:♠6♠4♥K	B:♣K♣10♣8
+P:♦7♣6♣8	B:♥7♦5♣2
+P:♣A♣8		B:♣5♠5♠A
+P:♠6♣4♦5	B:♣5♠5♠J
+P:♠10♠8		B:♣7♠4♥4
+P:♣2♣6		B:♠K♠Q♥A
+P:♥3♣8♣A	B:♦3♣2♦6
+P:♥10♥6		B:♠10♥5♦J
+P:♦5♦4		B:♥6♣3
+P:♦5♥3		B:♦6♣5♥10
+P:♣J♥9		B:♥4♣2♥6
+P:♦Q♦A♣5	B:♠3♠9♥9
+P:♠7♥6♦8	B:♥7♥K
+P:♠2♠A♣7	B:♠8♣A
+P:♠5♥6♣6	B:♦Q♣10♦A
+P:♥10♣8		B:♥5♥4
+P:♠9♠3♥5	B:♦Q♣5
+P:♣9♣6♦6	B:♦A♦7
+P:♣J♦A♠10	B:♠6♥3
+P:♣2♦A♠A	B:♣4♦4
+P:♣4♦4		B:♠6♥5♠K
+P:♠5♥J♣J	B:♦7♦3♠A
+P:♦4♠8♣3	B:♣K♦J♦10
+P:♠8♥A		B:♣5♦4
+P:♠10♠9		B:♣8♦10
+P:♦A♣4♦3	B:♥7♠2
+P:♠5♠2		B:♠10♥2♦9
+P:♣6♣Q		B:♣K♦K♠Q
+P:♥9♠2♥3	B:♠9♥J
+P:♠10♥10♣A	B:♥3♣3♦3
+P:♣7♥3♠Q	B:♠J♥7
+P:♣Q♠7		B:♥2♦10♠3
+P:♥A♦8		B:♠8♥3♠10
+P:♣9♣A♦A	B:♥6♠4♥8
+P:♠3♠Q♦6	B:♠7♠9♠6
+P:♠2♥2♣2	B:♣K♦A♦K
+P:♠9♥4♦5	B:♣3♣J♠Q

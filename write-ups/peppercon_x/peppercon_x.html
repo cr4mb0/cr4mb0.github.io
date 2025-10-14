@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>cr4mb0's - Peppercon-X Write-Up</title>
+</head>
+<BODY BGCOLOR="#0000" TEXT="#FFFFFF" LINK="#FFFFFF" VLINK="#FFFFFF" ALINK="#FF0000">
+<a href="../../index.html">home</a> &gt; <a href="../write_ups.html">write-ups</a> &gt; peppercon-x
+<h1>Peppercon-X Write-Up</h1>
+<hr />
+<table style="width: 100%" border=0>
+<tr><td colspan=2>Even though the Peppercon-X contest is over, some people may still be interested in knowing what the puzzles and their solutions were...</td></tr>
+<tr><td colspan=2>So welcome to the unofficial Peppercon-X write-up.<br /><br /></td></tr>
+<tr>
+	<td style="text-align: center;"><img src="./img/entry.jpg" /></td>
+	<td style="text-align: center;"><img src="./img/chip.jpg" /></td>
+</tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 1: "The Card"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Raw Text:</td><td>Peppercon 10 - Coxn "Qsfo wo k rsxd?" dy zozzobmyxzejjvo@qwksv.myw</td></tr>
+		<tr><td>Method:</td><td>ROT-16 (Reverse of ROT-10)</td></tr>
+		<tr><td>Output:</td><td>Peppercon 10 - SEND "GIVE ME A HINT?" TO PEPPERCONPUZZLE@GMAIL.COM</td></tr>
+		<tr><td>Note:</td><td>After sending the email, an automated response is returned. <a href="step1_hex_dump.txt">HEX_DUMP</a></td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 2: "Hex Dump"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Raw Text:</td><td><a href="step1_hex_dump.txt">HEX_DUMP</a></td></tr>
+		<tr><td>Method:</td><td>Analyze HEX Dump for clarity.  Many tools can do this, but I used <a href="https://cyberchef.io/">CyberChef.io</a></td></tr>
+		<tr><td>Note:</td><td>Reviewing the data, this appears to be a: Microsoft Office 2007+ document Extension: docx, which I happen to know is also a container type.</td></tr>
+		<tr><td>Method Cont.:</td><td>Take the HEX data and save it as a .docx type.  I used the HEX values, not the text, and pasted it into the HxD Hex editor and saved.</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 3: "Word Document Exploration"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Text (Top):</td><td><img src="./img/word_doc_top.png" /></td></tr>
+		<tr><td>Hidden Text (Bottom):</td><td><img src="./img/word_doc_bottom.png" /></td></tr>
+		<tr><td>Method:</td><td>Text was white on white, change it to something else to see it...</td></tr>
+		<tr><td>Method Cont.:</td><td>Next, change the type of the document file to a .zip and review container contents...</td></tr>
+		<tr><td>Contents:</td><td><img src="./img/inside_word.png" /></td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 4: "stage2.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage2_zip_content.png" /></td></tr>
+		<tr><td>Method:</td><td>Password protected.  This one is easy, you can use a brute force attack or just guess "password".</td></tr>
+		<tr><td>References:</td><td><a href="https://en.wikipedia.org/wiki/List_of_the_most_common_passwords">https://en.wikipedia.org/wiki/List_of_the_most_common_passwords</a></td></tr>
+		<tr><td>References Cont.:</td><td>You could also use something like fcrackzip:<br /><img src="./img/brute.jpeg" /></td></tr>
+		<tr><td>Contents of Stage2.txt:</td><td>"Nothing to see here. Maybe look somewhere else."</td></tr>
+		<tr><td>Note:</td><td>The most likely "somewhere else" is going to be the stage3.zip file...</td></tr>
+		<tr><td>Review of stage3.zip HEX (very bottom):</td><td><img src="./img/stage3_hex.png" /></td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 5: "stage3.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage3_zip_content.png" /></td></tr>
+		<tr><td>Method:</td><td>Password protected. "i've got no strings on me"</td></tr>
+		<tr><td>Contents of Stage3.txt:</td><td>/-\ /_ \  /_\ /_ \  /=\ _\ _  /=\ _\ _  /-\ /\ _  /-\ _\ \  /_\ /\ \  /_\ /\ _  /-\ _\ /  /-\ /\ _  /_\ /\ _  /-\ _\ /  /-\ /\ _  /_\ /\ /  /_\ /_ \  /-\ _\ \  /-\ _\ \  /_\ /\ _  /=\ /_ \  /_\ /\ /  /-\ /\ _  /_\ /_ _  /-\ _\ _  /=\ /_ \  /-\ /\ _  /=\ /_ \  /=\ /_ _  /-\ /_ \  /-\ /\ _  /-\ _\ \  /_\ /\ _  /=\ /_ /  /_\ /_ \  /-\ /\ _  /_\ /_ _  /=\ /_ _  /=\ /\ _  /-\ /\ _  /-\ _\ /  /=\ /_ _  /=\ /_ /  /_\ /_ \  /-\ /\ _  /=\ _\ /  /_\ /_ \  /=\ /_ _  /=\ /\ /  /_\ _\ /  /=\ /\ _  /_\ /_ /  /-\ /\ /  /-\ /\ _  /-\ _\ \  /_\ /\ \  /_\ /\ _  /-\ _\ /  /-\ /\ _  /-\ _\ /  /_\ /_ \  /=\ /\ _  /-\ /_ /  /_\ /\ _  /_\ _\ _  /_\ /_ \  /-\ /\ _  /_\ /\ _  /-\ _\ /  /-\ /\ _  /_\ _\ /  /-\ _\ /  /-\ _\ /  /_\ /\ _  /_\ /\ /  /=\ /_ \  /_\ /_ \  /_\ /_ /  /-\ /\ _  /-\ _\ \  /=\ /_ _  /-\ /\ _  /=\ /\ _  /-\ _\ _  /=\ /_ \  /-\ /\ _  /=\ /_ _  /=\ /_ \  /-\ /\ _  /=\ /\ /  /=\ /_ _  /=\ /\ _  /-\ _\ \  /-\ /\ _  /_\ /_ _  /=\ /_ _  /=\ /\ _  /-\ _\ \  /-\ /\ /  /-\ /\ _  /-\ _\ \  /_\ /\ \  /=\ /\ _  /_\ /_ \  /_\ /_ \</td></tr>
+		<tr><td>Note:</td><td>Looks like some text triangles double spaced gaps between 8 character values... Likely a substitution cipher.<br />There might be a method to the symbols, but a mono-alphabetic sub is a mono-alphabetic sub.</td></tr>
+		<tr><td>Reformatted, simplified character set defined to help with decipher tool input:</td><td>
+		<pre>
+/-\ /_ \  A
+/_\ /_ \  B
+/=\ _\ _  C
+/=\ _\ _  C
+/-\ /\ _  D
+/-\ _\ \  E
+/_\ /\ \  F
+/_\ /\ _  G
+/-\ _\ /  H
+/-\ /\ _  D
+/_\ /\ _  G
+/-\ _\ /  H
+/-\ /\ _  D
+/_\ /\ /  I
+/_\ /_ \  B
+/-\ _\ \  E
+/-\ _\ \  E
+/_\ /\ _  G
+/=\ /_ \  J
+/_\ /\ /  I
+/-\ /\ _  D
+/_\ /_ _  K
+/-\ _\ _  L
+/=\ /_ \  J
+/-\ /\ _  D
+/=\ /_ \  J
+/=\ /_ _  M
+/-\ /_ \  A
+/-\ /\ _  D
+/-\ _\ \  E
+/_\ /\ _  G
+/=\ /_ /  N
+/_\ /_ \  B
+/-\ /\ _  D
+/_\ /_ _  K
+/=\ /_ _  M
+/=\ /\ _  O
+/-\ /\ _  D
+/-\ _\ /  H
+/=\ /_ _  M
+/=\ /_ /  N
+/_\ /_ \  B
+/-\ /\ _  D
+/=\ _\ /  P
+/_\ /_ \  B
+/=\ /_ _  M
+/=\ /\ /  Q
+/_\ _\ /  R
+/=\ /\ _  O
+/_\ /_ /  S
+/-\ /\ /  T
+/-\ /\ _  D
+/-\ _\ \  E
+/_\ /\ \  F
+/_\ /\ _  G
+/-\ _\ /  H
+/-\ /\ _  D
+/-\ _\ /  H
+/_\ /_ \  B
+/=\ /\ _  O
+/-\ /_ /  U
+/_\ /\ _  G
+/_\ _\ _  V
+/_\ /_ \  B
+/-\ /\ _  D
+/_\ /\ _  G
+/-\ _\ /  H
+/-\ /\ _  D
+/_\ _\ /  R
+/-\ _\ /  H
+/-\ _\ /  H
+/_\ /\ _  G
+/_\ /\ /  I
+/=\ /_ \  J
+/_\ /_ \  B
+/_\ /_ /  S
+/-\ /\ _  D
+/-\ _\ \  E
+/=\ /_ _  M
+/-\ /\ _  D
+/=\ /\ _  O
+/-\ _\ _  L
+/=\ /_ \  J
+/-\ /\ _  D
+/=\ /_ _  M
+/=\ /_ \  J
+/-\ /\ _  D
+/=\ /\ /  Q
+/=\ /_ _  M
+/=\ /\ _  O
+/-\ _\ \  E
+/-\ /\ _  D
+/_\ /_ _  K
+/=\ /_ _  M
+/=\ /\ _  O
+/-\ _\ \  E
+/-\ /\ /  T
+/-\ /\ _  D
+/-\ _\ \  E
+/_\ /\ \  F
+/=\ /\ _  O
+/_\ /_ \  B
+/_\ /_ \  B
+		</pre>
+		</td></tr>
+		<tr><td>Condensed:</td><td>ABCCDEFGHDGHDIBEEGJIDKLJDJMADEGNBDKMODHMNBDPBMQROSTDEFGHDHBOUGVBDGHDRHHGIJBSDEMDOLJDMJDQMOEDKMOETDEFOBB</td></tr>
+		<tr><td>Character analysis:</td><td><img src="./img/stage3_char_analysis.png" /></td></tr>
+		<tr><td>Assuming "D" is a space:</td><td>ABCC EFGH GH IBEEGJI KLJ JMA EGNB KMO HMNB PBMQROST EFGH HBOUGVB GH RHHGIJBS EM OLJ MJ QMOE KMOET EFOBB</td></tr>
+		<tr><td>Solution:</td><td>WELL THIS IS GETTING FUN NOW TIME FOR SOME JEOPARDY THIS SERVICE IS ASSIGNED TO RUN ON PORT FORTY THREE</td></tr>
+		<tr><td>Substitution solver used:</td><td><a href="https://quipqiup.com/">quipqiup.com</a></td></tr>
+		<tr><td>Solve:</td><td>WHOIS protocol runs on Port 43.  For the sake of JEOPARDY, the answer would be "what is whois?" haha nice!</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 6: "stage4.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage4_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "what is whois?"</td></tr>
+		<tr><td>Contents of Stage4.txt:</td><td><a href="./Stage4.txt">Stage4.txt</a></td></tr>
+		<tr><td>Note:</td><td>This puzzle is baccarat themed.  We are given a "history board" and a series of hands played...</td></tr>
+		<tr><td>Note:</td><td><pre>The history board reads:
+RB RR BBR RR G BBB RRR G BBB BBR RRR RRR G RRR BBR RB BBB RRB G BR RRB BBR RBR BR</pre></td></tr>
+		<tr><td>Thoughts:</td><td>This one seemed to be stumping most.  One hint that was provided was "history is not always written by the winners".  Based on this, I eventually started assuming that the 
+		"history board" outranked the actual hands' winners/losers.  I let that "drive" which hand was the one to reference... At that point, the next stage is figuring out how the scoring works in baccarat.</td></tr>
+		<tr><td>Scoring Note:</td><td>"Each card has a point value. Tens, Jacks, Queens, and Kings count as a zero. Aces count as 1, 2s count as 2, 3s count as 3, etc."  The values are essentially MOD 10, so we only need to keep the ONES place.  See Blue/Red columns below for actual values.</td></tr>
+		<tr><td>Scores by hand, with choice isolated.<br /><br />Blue = Player<br />Red = Bank<br />Green = Tie:</td><td>
+		<pre>
+PLAYER		BANK			 BLUE		 RED		CHOSEN
+P:♠5♥2		B:♣J♦6			 P: 7		[B: 6]		R 6
+P:♥3♥A♣2	B:♦10♣7			[P: 6]		 B: 7		B 6
+P:♠3♠5		B:♥2♠7			 P: 8		[B: 9]		R 9
+P:♠K♥8		B:♥3♦4			 P: 8		[B: 7]		R 7
+P:♣2♦2♠5	B:♥3♣8♣A		[P: 9]		 B: 2		B 9
+P:♠J♥9		B:♣2♣6			[P: 9]		 B: 8		B 9
+P:♣10♣Q♠5	B:♥5♥6♠Q		 P: 5		[B: 1]		R 1
+P:♣7♥9		B:♠K♥10♣10		 P: 6		[B: 0]		R 0
+P:♦3♣J♦2	B:♣7♦J			 P: 5		[B: 7]		R 7
+P:♦2♣7		B:♠10♠9			[P: 9]		[B: 9]		G 
+P:♣4♠7♠K	B:♣8♦10			[P: 1]		 B: 8		B 1
+P:♠A♥K♣10	B:♠4♠K♣K		[P: 1]		 B: 4		B 1
+P:♣6♠5♦J	B:♣9♥K			[P: 1]		 B: 9		B 1
+P:♣A♣7		B:♦3♦8♠Q		 P: 8		[B: 1]		R 1
+P:♦10♦6		B:♥J♥K♣J		 P: 6		[B: 0]		R 0
+P:♠3♠9♥J	B:♣A♦3♠8		 P: 2		[B: 2]		R 2
+P:♥9♦5♠2	B:♥10♥6			[P: 6]		[B: 6]		G 
+P:♥3♥2♦6	B:♥6♣6♥7		[P: 1]		 B: 9		B 1
+P:♦4♦A♥6	B:♠10♣8			[P: 1]		 B: 8		B 1
+P:♠A♥A♠4	B:♣J♣3♥2		[P: 6]		 B: 5		B 6
+P:♠10♥A♥J	B:♣5♣4			[P: 1]		 B: 9		B 1
+P:♠6♠4♥K	B:♣K♣10♣8		[P: 0]		 B: 8		B 0
+P:♦7♣6♣8	B:♥7♦5♣2		 P: 1		[B: 4]		R 4
+P:♣A♣8		B:♣5♠5♠A		 P: 9		[B: 1]		R 1
+P:♠6♣4♦5	B:♣5♠5♠J		 P: 6		[B: 0]		R 0
+P:♠10♠8		B:♣7♠4♥4		 P: 8		[B: 5]		R 5
+P:♣2♣6		B:♠K♠Q♥A		 P: 8		[B: 1]		R 1
+P:♥3♣8♣A	B:♦3♣2♦6		 P: 2		[B: 1]		R 1
+P:♥10♥6		B:♠10♥5♦J		 P: 6		[B: 5]		R 5
+P:♦5♦4		B:♥6♣3			[P: 9]		[B: 9]		G 
+P:♦5♥3		B:♦6♣5♥10		 P: 8		[B: 1]		R 1
+P:♣J♥9		B:♥4♣2♥6		 P: 9		[B: 2]		R 2
+P:♦Q♦A♣5	B:♠3♠9♥9		 P: 6		[B: 1]		R 1
+P:♠7♥6♦8	B:♥7♥K			[P: 1]		 B: 7		B 1
+P:♠2♠A♣7	B:♠8♣A			[P: 0]		 B: 9		B 0
+P:♠5♥6♣6	B:♦Q♣10♦A		 P: 7		[B: 1]		R 1
+P:♥10♣8		B:♥5♥4			 P: 8		[B: 9]		R 9
+P:♠9♠3♥5	B:♦Q♣5			[P: 7]		 B: 5		B 7
+P:♣9♣6♦6	B:♦A♦7			[P: 1]		 B: 8		B 1
+P:♣J♦A♠10	B:♠6♥3			[P: 1]		 B: 9		B 1
+P:♣2♦A♠A	B:♣4♦4			[P: 4]		 B: 8		B 4
+P:♣4♦4		B:♠6♥5♠K		 P: 8		[B: 1]		R 1
+P:♠5♥J♣J	B:♦7♦3♠A		 P: 5		[B: 1]		R 1
+P:♦4♠8♣3	B:♣K♦J♦10		[P: 5]		 B: 0		B 5
+P:♠8♥A		B:♣5♦4			[P: 9]		[B: 9]		G
+P:♠10♠9		B:♣8♦10			[P: 9]		 B: 8		B 9
+P:♦A♣4♦3	B:♥7♠2			 P: 8		[B: 9]		R 9
+P:♠5♠2		B:♠10♥2♦9		 P: 7		[B: 1]		R 1
+P:♣6♣Q		B:♣K♦K♠Q		 P: 6		[B: 0]		R 0
+P:♥9♠2♥3	B:♠9♥J			[P: 4]		 B: 9		B 4
+P:♠10♥10♣A	B:♥3♣3♦3		[P: 1]		 B: 9		B 1
+P:♣7♥3♠Q	B:♠J♥7			[P: 0]		 B: 7		B 0
+P:♣Q♠7		B:♥2♦10♠3		 P: 7		[B: 5]		R 5
+P:♥A♦8		B:♠8♥3♠10		 P: 9		[B: 1]		R 1
+P:♣9♣A♦A	B:♥6♠4♥8		[P: 1]		 B: 8		B 1
+P:♠3♠Q♦6	B:♠7♠9♠6		 P: 9		[B: 2]		R 2
+P:♠2♥2♣2	B:♣K♦A♦K		[P: 6]		 B: 1		B 6
+P:♠9♥4♦5	B:♣3♣J♠Q		 P: 8		[B: 3]		R 3
+		</pre>
+		</td></tr>
+		<tr><td>Condensed & parsed:</td><td> 
+<pre>66 97 99 107
+111 102
+116 104 105 115
+121 101 97 114 115
+99 104 105 112 63</pre>
+</td></tr>
+		<tr><td>Method:</td><td>Decimal > ASCII</td></tr>
+		<tr><td>Site used:</td><td><a href="https://www.asciitohex.com/">https://www.asciitohex.com/</a></td></tr>
+		<tr><td>Result:</td><td>Back of this years chip?</td></tr>
+		<tr><td>Solution:</td><td>(Remember the poker chip image at the top? Let's use the text around the outside.) "decima concentio piperis"</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 7: "stage5.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage5_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "decima concentio piperis"</td></tr>
+		<tr><td>Contents of Stage5.txt:</td><td><a href="./Stage5.txt">Stage5.txt</a></td></tr>
+		<tr><td>Thoughts:</td><td>After looking at this for a bit, it should stand out that this is music related.  If you search for the text "X: 1 M: 4/4 L: 1/8 Q: 115 K: Em V: 1"
+		you will likely find that this is "a tune header written in ABC notation, a text-based format for representing musical scores. It defines the metadata and initial settings for a piece of music."</td></tr>
+		<tr><td>Note:</td><td>You can go to a site like <a href="https://notabc.app/abc-converter/">https://notabc.app/abc-converter/</a> and see if you recognize the song.</td></tr>
+		<tr><td>Note 2:</td><td>You might recognize the song, or you can try apps like Shazam.  I did not have any luck with it myself.  I ended up searching for some of the notes:<br />
+		<img src="./img/notes.png" /><br />I manually translated these as "dbagegd egd"<br />Doing a websearch for "dbagegd egd" brought up a <a href="https://www.instagram.com/reel/DKIbJ42Ij8b/">"Binks Sake" on Tin Whistle post</a>.
+		</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 8: "stage6.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage6_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "binks sake"</td></tr>
+		<tr><td>Contents of Stage6.txt:</td><td><a href="./Stage6.txt">Stage6.txt</a></td></tr>
+		<tr><td>Note:</td><td>At first glance this is a snowflake ascii art pattern. If you select the text, you'll see that there is also a bunch of whitespace at the end of the lines...</td></tr>
+		<tr><td>Method:</td><td>SNOW Cipher - "SNOW exploits the Steganographic Nature Of Whitespace. SNOW is used to conceal messages in ASCII text by appending whitespace to the end of lines. Because spaces and tabs are generally not visible in text viewers, the message is effectively hidden from casual observers."</td></tr>
+		<tr><td>Tool Used:</td><td>I used <a href="https://www.kali.org/tools/stegsnow/">"stegsnow"</a> in a Kali distro:<br />"$ stegsnow Stage6.txt"</td></tr>
+		<tr><td>Result:</td><td><a href="https://en.wikipedia.org/wiki/Vol._4_(Black_Sabbath_album)">Track #6 from Black Sabbath's album Vol. 4. RIP Ozzy.</a></td></tr>
+		<tr><td>Answer:</td><td>snowblind</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 9: "stage7.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage7_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "snowblind"</td></tr>
+		<tr><td>Contents of Stage7.txt:</td><td><a href="./Stage7.txt">Stage7.txt</a></td></tr>
+		<tr><td>Note:</td><td>Appears to be a poem titled "Ashes of the Burning Fruit"; I'm not seeing any acrostics or other clues.  Checking the .zip</td></tr>
+		<tr><td>Text at the end of the stage8.zip via Hex editor review:</td><td>[Let Spiciness Reign: 2271 6126 1253 4383 4231 1365 3162 6354 7254 3322 4131 1454 2411 4244 3131 4361 1455 3261 5122 1113 2321 3442 5373 2346 7232 5375 6134 1454 4343 2345 3125 6121 1426 3241 4231 6256 6263 6342 2333 6221 1341 1375 3334 5463 2411 1162]</td></tr>
+		<tr><td>Note:</td><td>Seems like a book/Ottendorf cipher. For example: 2271 = 2nd paragraph 2nd line 7th word 1st letter.</td></tr>
+		<tr><td>Solution:</td><td>nzrevpn nhgrbebsubeebesnagnflnaqfpvraprsvpgvba</td></tr>
+		<tr><td>ROT-13 (Always ROT to be sure):</td><td>AMERICA AUTEOROFHORRORFANTASYANDSCIENCEFICTION</td></tr>
+		<tr><td>Respaced:</td><td>AMERICA AUTEOR OF HORROR FANTASY AND SCIENCE FICTION</td></tr>
+		<tr><td>Corrected?:</td><td>AMERICAN AUTHOR OF HORROR FANTASY AND SCIENCE FICTION</td></tr>
+		<tr><td>Note:</td><td>Needs research and various options to be tried within the category...</td></tr>
+		<tr><td>Answer:</td><td>h.p. lovecraft</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 10: "stage8.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage8_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "h.p. lovecraft"</td></tr>
+		<tr><td>Contents of Stage8.txt:</td><td><a href="./Stage8.txt">Stage8.txt</a></td></tr>
+		<tr><td>Note:</td><td>Looks like base 64 text to me.</td></tr>
+		<tr><td>Method:</td><td>B64 > ASCII</td></tr>
+		<tr><td>Site used:</td><td><a href="https://www.asciitohex.com/">https://www.asciitohex.com/</a></td></tr>
+		<tr><td>Result:</td><td>Looks like some sort of image svg format created in "inkscape", but there is the text:<br />"Capsaicinum est via vitae"<br />and some morse code:<br />. .- . -.- .. -.- .-- ..- / .--. --- -..- -..- .- --- ...- --.. / --- .- / -... .- . / --. -.-. .-. -.. -.. .. ...- -.-. / --.. .-. ..- -... .. .---</td></tr>
+		<tr><td>Method:</td><td>Morse to text:</td></tr>
+		<tr><td>Converted:</td><td>EAEKIKWU POXXAOVZ OA BAE GCRDDIVC ZRUBIJ</td></tr>
+		<tr><td>Method:</td><td>Vigenere cipher with key "Capsaicinum est via vitae":</td></tr>
+		<tr><td>Converted:</td><td>CAPSICUM CULTIVAR OF THE CAROLINA REAPER</td></tr>
+		<tr><td>Note:</td><td>If nothing makes sense using a ROT, and you are given a potential key, always try vigenere, beaufort, etc...</td></tr>
+		<tr><td>Info:</td><td><a href="https://en.wikipedia.org/wiki/Carolina_Reaper">CAROLINA REAPER</a></td></tr>
+		<tr><td>Solution:</td><td>capsicum chinense</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 11: "stage9.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage9_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "capsicum chinense"</td></tr>
+		<tr><td>Contents of Stage9.txt:</td><td><a href="./Stage9.txt">Stage9.txt</a></td></tr>
+		<tr><td>Note:</td><td>Looks like we have Heck seven times, Heckseven?  And also (x|?) which suggest X or ? maybe XOR...</td></tr>
+		<tr><td>Site used:</td><td><a href="https://www.dcode.fr/xor-cipher">https://www.dcode.fr/xor-cipher</a></td></tr>
+		<tr><td>Note:</td><td>So there is an option for "Use the Hexadecimal key", the default is "7F" let's try "07" instead!</td></tr>
+		<tr><td>Result:</td><td><a href="https://www.youtube.com/watch?v=te7DuE2vfUM">https://www.youtube.com/watch?v=te7DuE2vfUM</a> Title of the stream.lower()</td></tr>
+		<tr><td>Solution:</td><td>"qrs pba nccebnpurf" fwiw, you can ROT-13 this to "DEF CON APPROACHES"</td></tr>
+		<tr><td>Side note:</td><td>Enjoy the whole video or the weremadillo will find you.</td></tr>
+	</table>
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td colspan=2>
+Step 12: "stage10.zip"
+</td></tr>
+<tr><td colspan=2>
+	<table border=1>
+		<tr><td>Contents:</td><td><img src="./img/stage10_zip_content.png" /></td></tr>
+		<tr><td>Method 1:</td><td>Password protected. "qrs pba nccebnpurf"</td></tr>
+		<tr><td>Contents of Stage10.txt:</td><td><a href="./Stage10.txt">Stage10.txt</a></td></tr>
+		<tr><td>Note:</td><td>Pasting this text into <a href="https://www.dcode.fr/cipher-identifier">https://www.dcode.fr/cipher-identifier</a> suggests <a href="https://www.dcode.fr/7-segment-display">https://www.dcode.fr/7-segment-display</a></td></tr>
+		<tr><td>Result:</td><td>thAnkyovForP1AyinGFindPEPPErconAndA5kb1AkhA10ForAPri2E</td></tr>
+		<tr><td>Cleaned up:</td><td>thAnk yov For P1AyinG Find PEPPErcon And A5k b1AkhA10 For A Pri2E</td></tr>
+		<tr><td>Cleaned up more:</td><td>Thank you for playing find peppercon and ask blakhal0 for a prize</td></tr>
+	</table>
+</td></tr>
+</table>
+</body>
+</html>

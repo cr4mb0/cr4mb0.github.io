@@ -1,0 +1,17 @@
+X: 1
+M: 4/4
+L: 1/8
+Q: 115
+K: Em
+V: 1
+z2dD ^cD =c2|B3 g,- g,A B2|A3 E-E4|z2 GG- GA G2|B2 DD- DEDG|
+|A3 A _BAGA|G2 (3=FED B,A, G,2|z2^CC DDEE|F2 ED-D4|^C2 D2 ^D2 E2| F2 F,2 G,2 A,2|
+|:(3B,DD D4 ED|B,2 D4 z2| (3B,DD D4 ED|B,2 G,4 z2:|
+|:DB,A,G, E,G, D,2 | DB,A,G, E,G, D,2 | E,G, D,2 E,F,G,C | B,B,A,G, A,2> E,2:| B,G,A,A, G,4 |
+V: 2
+K: c
+L: 1/4
+|D,4| G,,4|C,4|C,4|G,,4|
+|C,4|G,,4|A,,4|D,4|A,,4|D,4|
+|:G,, D, G,, D,| G,, D, G,, D,| G,, D, G,, D,| G,, D, G,, D,:| 
+|:G,,D,C,,G,,|G,,D,C,,G,,|C,,G,,C,,G,,|A,,,E,,D,,A,,:|^C,, D,,[G,,B,,]2|
